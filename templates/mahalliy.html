@@ -1,0 +1,20 @@
+
+{% load static %}
+
+{% block title %}Mahalliy xabarlar{% endblock %}
+
+{% block content %}
+   {% for news in mahalliy_yangiliklar %}
+       <div class="container">
+       <div class="col-sm-8">
+           <a href="{{ news.get_absolute_url }}">
+           <img src="{{ news.image.url }}" alt="{{ news.title }}" style="width: 50%">
+               <h2>{{ news.title }}</h2>
+            </a>
+
+
+       </div>
+
+       </div>
+    {% endfor %}
+{% endblock content %}
