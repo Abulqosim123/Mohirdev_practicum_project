@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <head>
+        <title>{% block title %}Foydalanuvchi profili{% endblock title %}</title>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px 24px;
+            }
+
+            .navbar__left,
+            .navbar__right {
+                flex: 1;
+                width: 100%;
+            }
+
+            .navbar__right {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+            }
+
+            .navbar__right .navbar__user {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .navbar__right .navbar__user img {
+                width: 14px;
+                height: 24px;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+
+            .navbar__right .navbar__user h4 {
+                font-size: 16px;
+                font-weight: 400;
+                font-style: normal;
+                line-height: 1;
+            }
+
+            .navbar__right button {
+                outline: none;
+                border: none;
+                border-radius: 6px;
+                padding: 12px 32px;
+                margin-left: 10px;
+                background: green;
+                color: white;
+                cursor: pointer;
+
+                font-size: 16px;
+                font-weight: 400;
+                font-style: normal;
+                line-height: 1;
+            }
+
+            .navbar__right button:hover {
+                color: green;
+                background: white;
+                border: 1px solid green;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 1080px;
+                height: 100vh;
+                margin: 0 auto;
+            }
+
+            .container h1 {
+                font-size: 32px;
+                font-weight: 700;
+                line-height: 1.8;
+                font-style: normal;
+                text-align: center;
+            }
+
+            .container .header {
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                padding: 25px 0;
+            }
+
+            .container .header .user__image {
+                width: 220px;
+                height: 220px;
+                border: 2px solid white;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+
+            .container .header .user__image img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .container .user__details {
+                padding: 25px;
+            }
+
+            .container .user__details form {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            .container .user__details form .user__details-field {
+                flex: 1;
+                width: 100%;
+                min-width: 350px;
+                padding: 8px 12px;
+
+                display: flex;
+                flex-direction: column;
+            }
+
+            .container .user__details form .user__details-field label {
+                font-size: 12px;
+                font-weight: 400;
+                font-style: normal;
+                line-height: 1;
+                padding-left: 4px;
+
+            }
+
+            .container .user__details form .user__details-field input {
+                padding: 8px 12px;
+                font-size: 14px;
+                font-weight: 400;
+                font-style: normal;
+                line-height: 1;
+
+                margin-top: 5px;
+                border: 1px solid gray;
+                outline: none;
+                border-radius: 2px;
+            }
+
+            .form__submit {
+                width: 100%;
+                padding: 12px 0;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .form__submit button {
+                outline: none;
+                border: none;
+                border-radius: 6px;
+                padding: 12px 32px;
+                margin: 0 auto;
+                background: green;
+                color: white;
+                cursor: pointer;
+
+                font-size: 16px;
+                font-weight: 400;
+                font-style: normal;
+                line-height: 1;
+            }
+
+            .form__submit button:hover {
+                color: green;
+                background: white;
+                border: 1px solid green;
+            }
+        </style>
+    </head>
+
+    <body>
+    <div class="navbar">
+        <div class="navbar__left"></div>
+        <div class="navbar__right">
+            <div class="navbar__user">
+                <img src="{{ user.profile.photo.url }}">
+                <h4>{{ user.username }}</h4>
+            </div>
+            <button type="button">
+                <a href="{% url 'logout' %}" class="text-danger">Log out</a>
+            </button>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Sizning Malumotlaringiz</h1>
+        <div class="header">
+            <div class="user__image">
+                <img src="{{ user.profile.photo.url }}">
+
+            </div>
+        </div>
+        <div class="user__details">
+            <form>
+                <div class="user__details-field">
+                    <label for="date_of_birth">Sizning tug'ilgan kuningiz :</label>
+                    <input type="text" value="{{ user.profile.date_of_birth }}" readonly placeholder="expamle007">
+                </div>
+                <div class="user__details-field">
+                    <label for="username">Enter your Username</label>
+                    <input type="text" value="{{ user.username }}" readonly placeholder="expamle007">
+                </div>
+                <div class="user__details-field">
+                    <label for="email">Enter your Email</label>
+                    <input type="text" value="{{ user.email }}" readonly placeholder="expamle@mail.ru">
+                </div>
+                <div class="user__details-field">
+                    <label for="firstname">Enter your Firstname</label>
+                    <input type="text" value="{{ user.first_name }}" readonly placeholder="expamle">
+                </div>
+                <div class="user__details-field">
+                    <label for="lastname">Enter your Lastname</label>
+                    <input type="text" value="{{ user.last_name }}" readonly placeholder="expamle">
+                </div>
+                <div class="form__submit">
+                    <button type="button">
+                        <a href="{% url 'password_change' %}">Parolni almashtirish</a>
+                    </button>
+                    <button type="button">
+                        <a href="{% url 'edit_user_information' %}">Profilni o'zgartirish</a>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </body>
+
+{% endblock content %}
+<h3>Xush kelibsiz {{ user.username }}</h3>
+<<h3><a href="{% url 'logout' %}" class="text-danger">Log out</a></h3>
+<h2>Siz haqingizdagi ma'lumotlar</h2>
+
+<label>Username:</label> <input value="{{ user.username }}" readonly placeholder="ma'lumot kiritilmagan"><br>
+<label>Email:</label> <input value="{{ user.email }}" readonly placeholder="ma'lumot kiritilmagan"><br>
+<label>Ismingiz:</label> <input value="{{ user.first_name }}" readonly placeholder="ma'lumot kiritilmagan"><br>
+<label>Familiyangiz:</label> <input value="{{ user.last_name }}" readonly placeholder="ma'lumot kiritilmagan"><br>
+<h4><a href="{% url 'password_change' %}" style="color: red">Parolni almashtirish</a></h4>
+<a href="{% url 'edit_user_information' %}" style="color: red">Profilni o'zgartirish</a>
+
+

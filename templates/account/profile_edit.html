@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Foydalanuvchi ma'lumotlarini o'zgartirish{% endblock %}
+{% block content %}
+    <h1>Foydalanuvchi ma'lumotlarini o'zgartirish</h1>
+    <p>Siz o'zingiz haqingizdagi ma'lumotlarni quyidagi forma orqali o'zgartirishingiz mumkin</p>
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <p><input type="submit" value="O'zgarishlarni saqlash"></p>
+    </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Yangilik qo'shish {% endblock %}
+
+{% block content %}
+    <h2 class="text-center">Yangilik qo'shish</h2>
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-info ml-2">Yangilik qo'shish</button>
+    </form>
+    <script>
+        const titleInput = document.querySelector('input[name=title]');
+        const slugInput = document.querySelector('input[name=slug]');
+
+        const slugify = (val) => {
+            return val.toString().toLowerCase().trim()
+                .replace(/&/g, '-and-')
+                .replace(/[\s\W-]+/g, '-')
+        };
+
+        titleInput.addEventListener('keyup', (e) => {
+            slugInput.setAttribute('value', slugify(titleInput.value));
+        });
+    </script>
+
+
+
+{% endblock content %}
+
+
