@@ -182,7 +182,7 @@ class NewsDeleteView(OnlyloggedSuperUser, DeleteView):
 class NewsCreateView(OnlyloggedSuperUser, CreateView):
     model = News
     template_name = 'news_create.html'
-    fields = ('title', 'slug', 'body', 'image', 'category', 'status')
+    fields = ('title', 'title_uz', 'title_en', 'title_ru', 'slug',  'body','body_uz', 'body_en', 'body_ru','image', 'category', 'status')
     success_url = reverse_lazy('home_page')
 
 

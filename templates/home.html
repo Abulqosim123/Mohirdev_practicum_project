@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load hitcount_tags %}
-{% block title %}Bosh sahifa{% endblock %}
+{% load i18n %}
+
+{% trans "Bosh sahifa" %}
+
+{% blocktrans %}
+    Bosh sahifa
+{% endblocktrans %}
+
 {% block content %}
 
     <section id="sliderSection">
@@ -23,7 +30,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4">
                 <div class="latest_post">
-                    <h2><span>So'ngi yangiliklar</span></h2>
+                    <h2><span>{% blocktrans %}So'ngi yangiliklar {% endblocktrans %}</span></h2>
                     <div class="latest_post_container">
                         <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
                         <ul class="latest_postnav">
@@ -33,7 +40,7 @@
                                             src="{{ news.image.url }}" alt=""> </a>
                                         <div class="media-body"><a href="{{ news.get_absolute_url }}"
                                                                    class="catg_title">{{ news.title }}</a>
-                                            <p> Ko'rilganlar soni : <i class="fa fa-eye"
+                                            <p>{% blocktrans %}Ko'rilganlar soni : {% endblocktrans %}<i class="fa fa-eye"
                                                                        aria-hidden="true"></i> {% get_hit_count for news %}
                                             </p>
                                         </div>
@@ -53,7 +60,7 @@
             <div class="col-lg-8 col-md-8 col-sm-8">
                 <div class="left_content">
                     <div class="single_post_content">
-                        <h2><span>Mahalliy</span></h2>
+                        <h2><span>{% blocktrans %}Mahalliy{% endblocktrans %}</span></h2>
                         <div class="single_post_content_left">
                             <ul class="business_catgnav  wow fadeInDown">
                                 {% for mahalliy in mahalliy_xabarlar %}
@@ -67,7 +74,7 @@
                                                         href="{{ mahalliy.get_absolute_url }}">{{ local.title }}</a>
                                                 </figcaption>
                                                 <p>{{ mahalliy.body | truncatewords:10 }}</p>
-                                                <p> Ko'rilganlar soni : <i class="fa fa-eye"
+                                                <p>{% blocktrans %}Ko'rilganlar soni : {% endblocktrans %}<i class="fa fa-eye"
                                                                            aria-hidden="true"></i> {% get_hit_count for mahalliy %}
                                                 </p>
                                             </figure>
@@ -87,7 +94,7 @@
                                                     src="{{ mahalliy.image.url }}" alt=""> </a>
                                                 <div class="media-body"><a href="{{ mahalliy.get_absolute_url }}"
                                                                            class="catg_title"> {{ mahalliy.title }}</a>
-                                                    <p> Ko'rilganlar soni : <i class="fa fa-eye"
+                                                    <p>{% blocktrans %}Ko'rilganlar soni : {% endblocktrans %}<i class="fa fa-eye"
                                                                                aria-hidden="true"></i> {% get_hit_count for mahalliy %}
                                                     </p>
                                                 </div>
@@ -101,7 +108,7 @@
                     <div class="fashion_technology_area">
                         <div class="fashion">
                             <div class="single_post_content">
-                                <h2><span>Sport</span></h2>
+                                <h2><span>{% blocktrans %}Sport{% endblocktrans %}</span></h2>
                                 <ul class="business_catgnav wow fadeInDown">
                                     {% for sport1 in sport_xabarlari %}
                                         {% if forloop.first %}
@@ -114,7 +121,7 @@
                                                             href="{{ sport1.get_absolute_url }}">{{ sport1.title|truncatewords:5 }}</a>
                                                     </figcaption>
                                                     <p>{{ sport1.title }}</p>
-                                                    <p> Ko'rilganlar soni : <i class="fa fa-eye"
+                                                    <p>{% blocktrans %}Ko'rilganlar soni : {% endblocktrans %}<i class="fa fa-eye"
                                                                                aria-hidden="true"></i> {% get_hit_count for sport1 %}
                                                     </p>
                                                 </figure>
@@ -131,7 +138,7 @@
                                                         src="{{ sport.image.url }}"> </a>
                                                     <div class="media-body"><a href="{{ sport.get_absolute_url }}"
                                                                                class="catg_title"> {{ sport.title }}</a>
-                                                        <p> Ko'rilganlar soni : <i class="fa fa-eye"
+                                                        <p>{% blocktrans %}Ko'rilganlar soni :{% endblocktrans %} <i class="fa fa-eye"
                                                                                    aria-hidden="true"></i> {% get_hit_count for sport %}
                                                         </p>
                                                     </div>
@@ -144,7 +151,7 @@
                         </div>
                         <div class="technology">
                             <div class="single_post_content">
-                                <h2><span>Texnologiya</span></h2>
+                                <h2><span>{% blocktrans %}Texnologiya{% endblocktrans %}</span></h2>
                                 <ul class="business_catgnav">
                                     {% for tech1 in texnologiya_xabarlari %}
                                         {% if forloop.first %}
@@ -158,7 +165,7 @@
                                                             href="{{ tech1.get_absolute_url }}">{{ tech1.title|truncatewords:5 }}</a>
                                                     </figcaption>
                                                     <p>{{ tech1.title }}</p>
-                                                    <p> Ko'rilganlar soni : <i class="fa fa-eye"
+                                                    <p>{% blocktrans %}Ko'rilganlar soni :{% endblocktrans %}<i class="fa fa-eye"
                                                                                aria-hidden="true"></i> {% get_hit_count for tech1 %}
                                                     </p>
                                                 </figure>
@@ -175,7 +182,7 @@
                                                     <img alt="" src="{{ texnologiya.image.url }}"> </a>
                                                     <div class="media-body"><a href="{{ texnologiya.get_absolute_url }}"
                                                                                class="catg_title">{{ texnologiya.title }}</a>
-                                                        <p> Ko'rilganlar soni : <i class="fa fa-eye"
+                                                        <p>{% blocktrans %}Ko'rilganlar soni :{% endblocktrans %} <i class="fa fa-eye"
                                                                                    aria-hidden="true"></i> {% get_hit_count for texnologiya %}
                                                         </p>
                                                     </div>
@@ -247,7 +254,7 @@
                         </ul>
                     </div>
                     <div class="single_post_content">
-                        <h2><span>Xorij</span></h2>
+                        <h2><span>{% blocktrans %}Xorij{% endblocktrans %}</span></h2>
                         <div class="single_post_content_left">
                             <ul class="business_catgnav">
                                 {% for xorij in xorij_xabarlari %}
@@ -261,7 +268,7 @@
                                                         href="{{ xorij.get_absolute_url }}">{{ xorij.title | truncatewords:5 }}</a>
                                                 </figcaption>
                                                 <p>{{ xorij.title }}</p>
-                                                <p> Ko'rilganlar soni : <i class="fa fa-eye"
+                                                <p>{% blocktrans %}Ko'rilganlar soni :{% endblocktrans %} <i class="fa fa-eye"
                                                                            aria-hidden="true"></i> {% get_hit_count for xorij %}
                                                 </p>
                                             </figure>
@@ -281,7 +288,7 @@
                                             </a>
                                                 <div class="media-body"><a href="{{ xorij1.get_absolute_url }}"
                                                                            class="catg_title">{{ xorij1.title|truncatewords:5 }}</a>
-                                                    <p> Ko'rilganlar soni : <i class="fa fa-eye"
+                                                    <p>{% blocktrans %}Ko'rilganlar soni :{% endblocktrans %}<i class="fa fa-eye"
                                                                                aria-hidden="true"></i> {% get_hit_count for xorij1 %}
                                                     </p>
                                                 </div>
@@ -297,7 +304,7 @@
             <div class="col-lg-4 col-md-4 col-sm-4">
                 <aside class="right_content">
                     <div class="single_sidebar">
-                        <h2><span>Ommabop</span></h2>
+                        <h2><span>{% blocktrans %}Ommabop{% endblocktrans %}</span></h2>
                         <ul class="spost_nav">
                             <li>
                                 <div class="media wow fadeInDown"><a href="single_page.html" class="media-left"> <img
